@@ -16,7 +16,8 @@
     "knex"
   ],
   "contributors": [
-    "Jake Bell <jakebrbell@gmail.com>"
+    "Jake Bell <jakebrbell@gmail.com>",
+    "Matthew Benavides <matthewrbenavides@gmail.com>"
   ],
   "license": "MIT",
   "dependencies": {
