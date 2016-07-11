@@ -22,6 +22,9 @@ if (process.env.NODE_ENV !== 'test') {
 }
 
 app.use(bodyParser.json());
+
+app.use(express.static(path.join('public')));
+
 app.use(pols);
 
 app.use((_req, res) => {
