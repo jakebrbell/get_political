@@ -1,5 +1,5 @@
 
-exports.up = function(knex, Promise) {
+exports.up = function(knex) {
   return knex.schema.createTable('users', (table) => {
     table.increments();
     table.string('first_name').notNullable().defaultTo('');
