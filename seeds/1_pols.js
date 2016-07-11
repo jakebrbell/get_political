@@ -86,6 +86,7 @@ exports.seed = function(knex) {
 
         pols.push(newPol)
       }
+
       return pols;
     })
     .then(() => {
