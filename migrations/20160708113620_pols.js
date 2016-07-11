@@ -3,8 +3,11 @@
 exports.up = function(knex) {
   return knex.schema.createTable('pols', (table) => {
     table.increments();
+    table.string('bioguide_id').notNullable().defaultTo('');
     table.string('name').notNullable().defaultTo('');
     table.string('title').notNullable().defaultTo('');
+    table.string('state_name').notNullable().defaultTo('');
+    table.string('district').notNullable().defaultTo('');
     table.string('party').notNullable().defaultTo('');
     table.string('street').notNullable().defaultTo('');
     table.string('city').notNullable().defaultTo('');
