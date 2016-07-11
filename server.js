@@ -10,6 +10,8 @@ const port = process.env.PORT || 8000;
 
 const bodyParser = require('body-parser');
 
+const pols = require('./routes/pols');
+
 const app = express();
 
 app.disable('x-powered-by');
@@ -20,18 +22,7 @@ if (process.env.NODE_ENV !== 'test') {
 }
 
 app.use(bodyParser.json());
-
-request.get(`https://www.googleapis.com/civicinfo/v2/representatives?address=98109&key=${process.env.GOOGLE_CIVIC_API}`, (err, res, body) => {
-  if (err) {
-    return next(err);
-  }
-
-  console.log(JSON.parse(body).officials[0].photoUrl);
-});
-
-app.use((req, res, next) => {
-
-});
+app.use(pols);
 
 app.use((_req, res) => {
   res.sendStatus(404);
@@ -39,6 +30,10 @@ app.use((_req, res) => {
 
 // eslint-disable-next-line max-params
 app.use((err, _req, res, _next) => {
+  if (err.status) {
+    return res.status(err.status).send(err);
+  }
+
   // eslint-disable-next-line no-console
   console.error(err.stack);
   res.sendStatus(500);
