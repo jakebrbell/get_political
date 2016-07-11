@@ -36,6 +36,7 @@ exports.seed = function(knex) {
         };
 
         for (let j = 0; j < pres.officials[i].channels.length; j++) {
+
           if (pres.officials[i].channels[j].type === 'Facebook') {
             newPol.facebook = `https://www.facebook.com/${pres.officials[i].channels[j].id}`;
           }
