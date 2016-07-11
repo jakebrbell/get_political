@@ -9,7 +9,7 @@ exports.up = function(knex) {
     table.string('party').notNullable().defaultTo('');
     table.text('bio').notNullable().defaultTo('');
     table.string('city').notNullable().defaultTo('');
-    table.specificType('state', 'char(2)').notNullable();
+    table.specificType('state', 'char(2)').notNullable().defaultTo('');
     table.string('picture_url').notNullable().defaultTo('');
     table.timestamps(true, true);
   });
