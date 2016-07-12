@@ -25,7 +25,7 @@ exports.seed = function(knex) {
           title: pres.offices[i].name,
           state_name: '',
           district: '',
-          party: pres.officials[i].name,
+          party: pres.officials[i].party,
           street: '1600 Pennsylvania Avenue, NW',
           city: 'Washington',
           state: 'DC',
