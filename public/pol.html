@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Get Political</title>
+    <link rel="stylesheet" href="css/materialize.css" media="screen" title="no title" charset="utf-8">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/pol.css" media="screen" title="no title" charset="utf-8">
+  </head>
+
+  <body>
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-top">
+          <div class="container">
+            <p>
+              .get(POLITICAL)
+              <span class="tagline">
+                your trusted source for political information
+              </span>
+              <a href="#">
+                <span class="login">login/register</span>
+              </a>
+            </p>
+          </div>
+        </div>
+        <div class="blue-bg">
+          <div class="container">
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="hide-on-med-and-down">
+              <li class="img"><a href="index.html">
+                <img class=""
+                src="https://www.whitehouse.gov/profiles/forall/modules/custom/gov_whitehouse_www/images/icons/wh_logo_seal.png" height="48px" width="70px" alt="" />
+              </a>
+              </li>
+              <li><a href="#">PROFILE</a></li>
+              <li><a href="#">DASHBOARD</a></li>
+              <li><a href="#">NEWS</a></li>
+              <li><a href="#">ABOUT</a></li>
+              <li class="search-nav right" id="kill-border">
+                <div class="float-right search-icon">
+                  <a href="search.html">
+                    <i class="material-icons">search</i>
+                  </a>
+                </div>
+                <div class="search-input">
+                  <input type="text" placeholder="Politician Name or Zip Code" id="search">
+                </div>
+              </li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+              <li class="img"><a href="index.html">
+                <img class=""
+                src="https://www.whitehouse.gov/profiles/forall/modules/custom/gov_whitehouse_www/images/icons/wh_logo_seal.png" height="48px" width="70px" alt="" />
+              </a>
+              </li>
+              <li><a href="#">PROFILE</a></li>
+              <li><a href="#">DASHBOARD</a></li>
+              <li><a href="#">NEWS</a></li>
+              <li><a href="#">ABOUT</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="row">
+      <div class="col s12">
+        <div class="body-bg">
+          <div class="container">
+            <div class="politician-container">
+              <div class="politician pol-blue">
+
+                <div class="row pol-top">
+
+                    <div class="politician-img col s4">
+                      <img src="images/stock2.png" height="275px"  width="275px" alt="" />
+                      <ul>
+                        <li>
+                          <img src="images/facebook-icon.png" height="50px"  width="50px" alt="" />
+                        </li>
+                        <li>
+                          <img src="images/Twitter-icon.png" height="50px"  width="50px" alt="" />
+                        </li>
+                        <li>
+                          <img src="images/facebook-icon.png" height="50px"  width="50px" alt="" />
+                        </li>
+                      </ul>
+
+                    </div>
+
+                  <div class="details col s5">
+                    <h1>Barak Obama</h1>
+                    <h2>President</h2>
+                    <p>1600 Pennsylvania Ave NW,</p>
+                    <p> Washington, DC 20500</p>
+                    <p class="pushdown"> Phone: (206) 545-7676</p>
+                  </div>
+
+                  <div class="col s3">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">FOLLOWING
+                      <i class="material-icons right">done</i>
+                    </button>
+                  </div>
+
+                </div>
+
+
+
+
+                <div class="row">
+
+                  <div class="pol-main col s4">
+                    <a class="twitter-timeline" data-width="275" data-height="1000" data-dnt="true" data-theme="light" href="https://twitter.com/BarackObama"></a>
+                  </div>
+
+
+                  <div class="class col s8">
+                    <h1 class="center-align">bio</h1>
+                    <p class="bio">
+                      Paul Ryan, a Representative from Wisconsin; born in Janesville, Rock County, Wis., January 29, 1970; graduated from Joseph A. Craig High School, Janesville, Wis., 1988; B.A., Miami University, Oxford, Ohio, 1992; construction business; staff, United States Senator Robert Kasten of Wisconsin, 1992; staff assistant, Empower America, 1993-1995; staff, United States Senator Sam Brownback of Kansas, 1995-1997; elected as a Republican to the One Hundred Sixth and to the eight succeeding Congresses (January 3, 1999-present); chair, Committee on the Budget (One Hundred Twelfth and One Hundred Thirteenth Congresses); chair, Committee on Ways and Means (One Hundred Fourteenth Congress); chair, Joint Committee on Taxation (One Hundred Fourteenth Congress); unsuccessful Republican candidate for Vice President of the United States in 2012; Speaker of the House (One Hundred Fourteenth Congress).
+                    </p>
+                  </div>
+
+                </div>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <footer class="page-footer ">
+          <div class="footer-copyright">
+            <div class="container">
+              © 2016 Copyright Text -- Jake Bell
+
+              <a href="https://github.com/jakebrbell">
+                https://github.com/jakebrbell
+              </a>
+              -- Matthew Benavides
+              <a href="https://github.com/mrb91002">
+                https://github.com/mrb91002
+              </a>
+            </div>
+          </div>
+        </footer>
+
+
+
+      </div>
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <script>
+      window.twttr = (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {};
+      if (d.getElementById(id)) return t;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+​
+      t._e = [];
+      t.ready = function(f) {
+        t._e.push(f);
+      };
+​
+      return t;
+    }(document, "script", "twitter-wjs"));
+  </script>
+  </body>
+</html>
