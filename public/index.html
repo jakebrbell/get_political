@@ -11,48 +11,54 @@
   <body>
     <div class="navbar-fixed">
       <nav>
-        <div class="row">
-          <div class="col s12">
-            <div class="nav-top">
-              <div class="container">
-                <p class="">
-                  .get(POLITICAL)
-                  <span class="tagline">
-                    your trusted source for political information
-                  </span>
-                  <a href="#">
-                    <span class="login">
-                      login/register
-                    </span>
+        <div class="nav-top">
+          <div class="container">
+            <p>
+              .get(POLITICAL)
+              <span class="tagline">
+                your trusted source for political information
+              </span>
+              <a href="#">
+                <span class="login">login/register</span>
+              </a>
+            </p>
+          </div>
+        </div>
+        <div class="blue-bg">
+          <div class="container">
+            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+            <ul class="hide-on-med-and-down">
+              <li class="img"><a href="index.html">
+                <img class=""
+                src="https://www.whitehouse.gov/profiles/forall/modules/custom/gov_whitehouse_www/images/icons/wh_logo_seal.png" height="48px" width="70px" alt="" />
+              </a>
+              </li>
+              <li><a href="#">PROFILE</a></li>
+              <li><a href="#">DASHBOARD</a></li>
+              <li><a href="#">NEWS</a></li>
+              <li><a href="#">ABOUT</a></li>
+              <li class="search-nav right" id="kill-border">
+                <div class="float-right search-icon">
+                  <a href="search.html">
+                    <i class="material-icons">search</i>
                   </a>
-                </p>
-              </div>
-            </div>
-            <div class="blue-bg">
-              <div class="container">
-                <ul class="inline-b">
-                  <li class="img"><a href="index.html">
-                    <img class=""
-                    src="https://www.whitehouse.gov/profiles/forall/modules/custom/gov_whitehouse_www/images/icons/wh_logo_seal.png" height="48px" width="70px" alt="" />
-                  </a>
-                  </li>
-                  <li><a href="#">PROFILE</a></li>
-                  <li><a href="#">DASHBOARD</a></li>
-                  <li><a href="#">NEWS</a></li>
-                  <li><a href="#">ABOUT</a></li>
-                  <li class="search-nav" id="kill-border">
-                    <div class="inline-b float-right search-icon">
-                      <a href="search.html">
-                        <i class="material-icons">search</i>
-                      </a>
-                    </div>
-                    <div class="inline-b search-input">
-                      <input placeholder="Politician Name or Zip Code" id="search">
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
+                </div>
+                <div class="search-input">
+                  <input type="text" placeholder="Politician Name or Zip Code" id="search">
+                </div>
+              </li>
+            </ul>
+            <ul class="side-nav" id="mobile-demo">
+              <li class="img"><a href="index.html">
+                <img class=""
+                src="https://www.whitehouse.gov/profiles/forall/modules/custom/gov_whitehouse_www/images/icons/wh_logo_seal.png" height="48px" width="70px" alt="" />
+              </a>
+              </li>
+              <li><a href="#">PROFILE</a></li>
+              <li><a href="#">DASHBOARD</a></li>
+              <li><a href="#">NEWS</a></li>
+              <li><a href="#">ABOUT</a></li>
+            </ul>
           </div>
         </div>
       </nav>
@@ -165,6 +171,6 @@
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
-    <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
   </body>
 </html>
