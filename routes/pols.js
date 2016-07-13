@@ -46,6 +46,7 @@ router.get('/pols', (req, res, next) => {
             .where('bioguide_id', bioguide_ids[0])
             .orWhere('bioguide_id', bioguide_ids[1])
             .orWhere('bioguide_id', bioguide_ids[2])
+            .orderBy('party', 'desc')
             .then((pols) => {
               res.send(pols);
             })
