@@ -1,25 +1,20 @@
-'use strict'
-
+'use strict';
 
 const url = window.location.href;
 
-
 const qmark = url.indexOf('?');
 const encoding = url.substring(`${qmark + 1}`);
-let query = '';
+let query1 = '';
 
 console.log(parseInt(encoding));
 
 if (Number.isNaN(parseInt(encoding))) {
-  query = 'name=' + encoding;
+  query1 = 'name=' + encoding;
 } else {
-  query = 'zip=' + encoding;
+  query1 = 'zip=' + encoding;
 }
 
-
-
-
-var $xhr = $.getJSON(`http://localhost:8000/pols/?${query}`);
+var $xhr = $.getJSON(`http://localhost:8000/pols/?${query1}`);
 
 $xhr.done(function(data) {
   if ($xhr.status !== 200) {
@@ -43,23 +38,13 @@ $xhr.done(function(data) {
       const pol = data[i];
       let partyColor = "";
 
-      // if (data.party === 'D') {
-      //   pol.party = 'Democrat'
-      // } else if (data.party === 'R') {
-      //   pol.party = 'Republican'
-      // }
-
       if (pol.party === 'D') {
         partyColor = 'pol-blue';
       } else {
         partyColor = 'pol-red';
       }
 
-
-
       $('.politician-container').append(`
-
-
 
       <div class="politician ${partyColor} z-depth-3">
         <ul>
@@ -87,13 +72,8 @@ $xhr.done(function(data) {
       </div>
 
     `);
-
-
     }
-
   }
-
-
 });
 
 $xhr.fail(function(err) {
