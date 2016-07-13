@@ -21,7 +21,15 @@ $xhr.done(function(data) {
     // The served an unsuccessful status code.
     return;
   }
+
   const pol = data[0];
+
+  if (pol.title === 'Sen') {
+    pol.title = 'United States Senator'
+  } else {
+    pol.title = 'United States Representative'
+  }
+
   console.log(pol);
   console.log(data);
   if (data.length === 1) {
@@ -35,7 +43,7 @@ $xhr.done(function(data) {
         <div class="row pol-top">
 
             <div class="politician-img col s4">
-              <img src="${pol.picture_url}" height="275px"  width="275px" alt="" />
+              <img src="${pol.picture_url}" height="275px"  width="225px" alt="" />
               <ul>
                 <li>
                   <img src="images/facebook-icon.png" height="50px"  width="50px" alt="" />
@@ -79,7 +87,9 @@ $xhr.done(function(data) {
           <div class="class col s8">
             <h1 class="center-align">bio</h1>
             <p class="bio">
-              Paul Ryan, a Representative from Wisconsin; born in Janesville, Rock County, Wis., January 29, 1970; graduated from Joseph A. Craig High School, Janesville, Wis., 1988; B.A., Miami University, Oxford, Ohio, 1992; construction business; staff, United States Senator Robert Kasten of Wisconsin, 1992; staff assistant, Empower America, 1993-1995; staff, United States Senator Sam Brownback of Kansas, 1995-1997; elected as a Republican to the One Hundred Sixth and to the eight succeeding Congresses (January 3, 1999-present); chair, Committee on the Budget (One Hundred Twelfth and One Hundred Thirteenth Congresses); chair, Committee on Ways and Means (One Hundred Fourteenth Congress); chair, Joint Committee on Taxation (One Hundred Fourteenth Congress); unsuccessful Republican candidate for Vice President of the United States in 2012; Speaker of the House (One Hundred Fourteenth Congress).
+
+            ${pol.bio}
+
             </p>
           </div>
 
