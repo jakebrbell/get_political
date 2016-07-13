@@ -16,6 +16,7 @@ const pols = require('./routes/pols');
 const users = require('./routes/users');
 const session = require('./routes/session');
 const pols_users = require('./routes/pols_users');
+const users_pols = require('./routes/users_pols');
 
 const app = express();
 
@@ -39,6 +40,7 @@ app.use(pols);
 app.use(users);
 app.use(session);
 app.use(pols_users);
+app.use(users_pols);
 
 app.use((_req, res) => {
   res.sendStatus(404);
