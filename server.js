@@ -9,9 +9,12 @@ const path = require('path');
 const port = process.env.PORT || 8000;
 
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const cookieSession = require('cookie-session');
 
 const pols = require('./routes/pols');
 const users = require('./routes/users');
+const session = require('./routes/session')
 
 const app = express();
 
@@ -23,11 +26,17 @@ if (process.env.NODE_ENV !== 'test') {
 }
 
 app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(cookieSession({
+  name: 'political',
+  secret: process.env.SESSION_SECRET
+}));
 
 app.use(express.static(path.join('public')));
 
 app.use(pols);
 app.use(users);
+app.use(session);
 
 app.use((_req, res) => {
   res.sendStatus(404);
