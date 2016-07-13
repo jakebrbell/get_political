@@ -14,6 +14,7 @@ exports.up = function(knex) {
     table.specificType('state', 'char(2)').notNullable().defaultTo('');
     table.string('zipcode').notNullable().defaultTo('');
     table.string('phone').notNullable().defaultTo('');
+    table.text('bio').notNullable().defaultTo('');
     table.string('twitter').notNullable().defaultTo('');
     table.string('facebook').notNullable().defaultTo('');
     table.string('youtube').notNullable().defaultTo('');
