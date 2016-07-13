@@ -130,44 +130,6 @@ exports.seed = function(knex) {
       return pols;
     })
     .then(() => {
-      return request.get(`https://www.googleapis.com/civicinfo/v2/representatives/ocd-division%2Fcountry%3Aus?roles=headOfState&roles=deputyHeadOfGovernment&key=${process.env.GOOGLE_CIVIC_API}`)
-    })
-    .then((response) => {
-      const pres = JSON.parse(response);
-
-      for (let i = 0; i < pres.officials.length; i++) {
-        let newPol = {
-          name: pres.officials[i].name,
-          title: pres.offices[i].name,
-          state_name: '',
-          district: '',
-          party: pres.officials[i].name,
-          street: '1600 Pennsylvania Avenue, NW',
-          city: 'Washington',
-          state: 'DC',
-          zipcode: '20500',
-          phone: pres.officials[i].phones[0],
-          bioguide_id: '',
-          picture_url: pres.officials[i].photoUrl
-        };
-
-        for (let j = 0; j < pres.officials[i].channels.length; j++) {
-          if (pres.officials[i].channels[j].type === 'Facebook') {
-            newPol.facebook = `https://www.facebook.com/${pres.officials[i].channels[j].id}`;
-          }
-          else if (pres.officials[i].channels[j].type === 'Twitter') {
-            newPol.twitter = `https://www.twitter.com/${pres.officials[i].channels[j].id}`;
-          }
-          else if (pres.officials[i].channels[j].type === 'YouTube') {
-            newPol.youtube = `https://www.youtube.com/${pres.officials[i].channels[j].id}`;
-          }
-        }
-
-        pols.push(newPol)
-      }
-      return pols;
-    })
-    .then(() => {
       return knex('pols').insert(pols);
     })
     .then(() => {
