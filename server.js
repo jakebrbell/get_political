@@ -14,7 +14,8 @@ const cookieSession = require('cookie-session');
 
 const pols = require('./routes/pols');
 const users = require('./routes/users');
-const session = require('./routes/session')
+const session = require('./routes/session');
+const pols_users = require('./routes/pols_users');
 
 const app = express();
 
@@ -37,6 +38,7 @@ app.use(express.static(path.join('public')));
 app.use(pols);
 app.use(users);
 app.use(session);
+app.use(pols_users);
 
 app.use((_req, res) => {
   res.sendStatus(404);
