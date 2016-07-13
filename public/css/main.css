@@ -111,6 +111,11 @@ li .search-icon a {
 
 /*-----------END NAV -----------*/
 
+h1 {
+  font-size: 20px;
+}
+
+
 body {
   overflow: auto;
   background-color: #F5F6F5;

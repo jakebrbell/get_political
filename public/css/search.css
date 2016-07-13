@@ -9,6 +9,7 @@
 /*-----------NAV ONLY-----------*/
 
 
+
 .nav-top {
   height: 36px;
   width: 100%;
@@ -190,10 +191,18 @@ position: absolute;
 
 }
 
+
+.politician-img  {
+  height: 100px;
+  width: 100px;
+}
+
 .politician-img img {
   border-radius: 50%;
   margin-left: 20px;
   margin-top: 25px;
+  width: 100%;
+  height: auto;
 }
 
 li {
