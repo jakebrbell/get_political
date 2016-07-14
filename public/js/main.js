@@ -4,6 +4,9 @@ let hrefEncoded = '';
 let input = ''
 let query = '';
 
+
+// functionality for nav bar
+
 $("input.top").keyup(() => {
   input = $('#search').val();
   console.log($('#search').val());
@@ -29,7 +32,8 @@ $('#top-search').click(function( event ) {
       return;
     }
     if (data.length === 1) {
-      window.location.replace("http://localhost:8000/pol.html");
+      console.log('this should have switched the page');
+      window.location.replace(`http://localhost:8000/pol.html?${encodeURI(input)}`);
     } else if (data.length === 0) {
       alert('These are not the politicians you\'re looking for!')
     } else {
