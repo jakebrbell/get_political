@@ -45,5 +45,3 @@ $('#top-search').click(function( event ) {
   });
 
 });
-
-$(".button-collapse").sideNav();

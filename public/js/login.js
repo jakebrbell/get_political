@@ -7,17 +7,9 @@
     return;
   }
 
-  $('select').material_select();
-
   $('.register').click((_event) => {
-    const first_name = $('#first_name').val().trim();
-    const last_name = $('#last_name').val().trim();
     const email = $('#email').val().trim();
     const password = $('#password').val();
-    const city = $('#city').val().trim();
-    const state = $('#state').val().trim();
-    const party = $('#party').val().trim();
-    const bio = $('#bio').val().trim();
 
     // Validation
     if (!email) {
@@ -33,15 +25,15 @@
     }
 
     const $xhr = $.ajax({
-      url: '/users',
+      url: '/session',
       type: 'POST',
       contentType: 'application/json',
-      data: JSON.stringify({ first_name, last_name, email, password, city, state, party, bio })
+      data: JSON.stringify({ email, password })
     });
 
     $xhr.done(() => {
       if ($xhr.status !== 200) {
-        Materialize.toast('User could not be registered. Please try again.');
+        Materialize.toast('User could not be logged in. Please try again.');
 
         return;
       }
@@ -50,7 +42,7 @@
     });
 
     $xhr.fail(() => {
-      Materialize.toast('User could not be registered. Please try again.');
+      Materialize.toast('User could not be logged in. Please try again.');
     });
   });
 })();
