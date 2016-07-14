@@ -46,7 +46,7 @@ var $xhr = $.getJSON(`http://localhost:8000/pols/?${query}`);
     if (data.length === 1) {
         window.location.replace("http://localhost:8000/pol.html");
     } else if (data.length === 0) {
-      alert('These are not the politicians you\'re looking for!')
+      Materialize.toast('That Search Will Not Work', 4000)
     } else {
       window.location.replace(`http://localhost:8000/search.html?${encodeURI(input)}`);
     }
@@ -55,8 +55,7 @@ var $xhr = $.getJSON(`http://localhost:8000/pols/?${query}`);
   });
 
   $xhr.fail(function(err) {
-    alert('These are not the politicians you\'re looking for!')
-    console.log(err);
+    Materialize.toast('That Search Will Not Work', 4000);
   });
 
 });

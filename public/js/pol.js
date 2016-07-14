@@ -113,11 +113,9 @@ $xhr.done(function(data) {
   } else {
 
     // window.location.replace("http://localhost:8000/pol.html");
-    alert('don\'t even thing about it')
-    }
+    Materialize.toast('That Search Will Not Work', 4000)    }
 });
 
 $xhr.fail(function(err) {
-  // The request was unsuccessful for some reason (ie. the server couldn't even respond).
-  console.log(err);
+  Materialize.toast('That Search Will Not Work', 4000)
 });

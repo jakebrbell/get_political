@@ -35,13 +35,16 @@ $('#top-search').click(function( event ) {
       console.log('this should have switched the page');
       window.location.replace(`http://localhost:8000/pol.html?${encodeURI(input)}`);
     } else if (data.length === 0) {
-      alert('These are not the politicians you\'re looking for!')
-    } else {
+        Materialize.toast('That Search Will Not Work', 4000);
+          } else {
       window.location.replace(`http://localhost:8000/search.html?${encodeURI(input)}`);
     }
   });
   $xhr.fail(function(err) {
-    alert('These are not the politicians you\'re looking for!')
+
+    //toast goes here
+    Materialize.toast('That Search Will Not Work', 4000);
+
     console.log(err);
   });
 
