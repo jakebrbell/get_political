@@ -1,3 +1,5 @@
+$('select').material_select();
+
 (function() {
   'use strict';
 
