@@ -1,11 +1,13 @@
 'use strict';
 
+var hrefEncoded;
+var input;
 var query;
 
 $("input.top").keyup(() => {
-  var input = $('#search').val();
+  input = $('#search').val();
 
-  var hrefEncoded = `search.html?${encodeURI(input)}`
+  hrefEncoded = `search.html?${encodeURI(input)}`
   $('a.test').prop('href', hrefEncoded);
   $('form input').prop('value', input);
   $('form button').attr('name', input);
@@ -33,7 +35,7 @@ var $xhr = $.getJSON(`http://localhost:8000/pols/?${query}`);
     if (data.length === 1) {
         window.location.replace("http://localhost:8000/pol.html");
     } else if (data.length === 0) {
-      Materialize.toast('That Search Will Not Work', 4000)
+      alert('These are not the politicians you\'re looking for!')
     } else {
       window.location.replace(`http://localhost:8000/search.html?${encodeURI(input)}`);
     }
@@ -42,7 +44,8 @@ var $xhr = $.getJSON(`http://localhost:8000/pols/?${query}`);
   });
 
   $xhr.fail(function(err) {
-    Materialize.toast('That Search Will Not Work', 4000);
+    alert('These are not the politicians you\'re looking for!')
+    console.log(err);
   });
 
 });
