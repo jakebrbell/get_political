@@ -120,14 +120,14 @@ body {
 
 .body-bg {
   display: block;
-  /*height: 800px;*/
-  height: 1000px;
+  height: auto;
   background: url(../images/Lincoln-Memorial-in-DC.jpg)    no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  overflow: none;
+  overflow: auto;
+  padding-bottom: 20px
 }
 
 .btn, .btn-large, .btn-flat {
@@ -144,9 +144,9 @@ body {
   line-height: 5px;
 }
 
-div .container {
+/*div .container {
   height: 72px;
-}
+}*/
 
 footer.page-footer {
   background-color: rgba(0,60,128,0.82);
@@ -177,8 +177,7 @@ footer.page-footer {
 
 .politician-container {
 background-color: transparent;
-margin-top: 43px;
-position: absolute;
+margin-top: 63px;
 }
 
 .politician {
