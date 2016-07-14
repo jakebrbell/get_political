@@ -162,6 +162,10 @@ form label {
   float: right;
 }
 
+.lower-news {
+  margin-bottom: 35px;
+}
+
 .lower-news .card {
   padding: 20px;
 }
