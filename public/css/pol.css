@@ -265,12 +265,7 @@ li {
 }
 
 .twitter-timeline {
-  height: 400px;
-  width: 275px;
-  display: block;
   margin-left: 25px;
-  color: black;
-  background-color: green;
   margin-top: 25px;
 }
 

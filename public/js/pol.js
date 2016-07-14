@@ -87,7 +87,7 @@ $xhr.done(function(data) {
         <div class="row">
 
           <div class="pol-main col s4">
-            <a class="twitter-timeline" data-width="275" data-height="1000" data-dnt="true" data-theme="light" href="https://twitter.com/BarackObama"></a>
+            <a class="twitter-timeline" data-width="300" data-height="450" data-dnt="true" data-theme="light" href="https://twitter.com/${pol.twitter}"></a>
           </div>
 
 
