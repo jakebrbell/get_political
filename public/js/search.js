@@ -50,12 +50,12 @@ $xhr.done(function(data) {
         <ul>
           <li class="img inline-b">
             <div class="politician-img inline-b">
-              <a href="pol.html">
+              <a href="pol.html?${pol.name}">
                 <img src="${pol.picture_url}" alt="" />
               </a>
             </div>
           </li>
-          <a href="pol.html">
+          <a href="pol.html?${pol.name}">
           <li class="details">
               <p>${pol.name}</p>
               <p>${pol.title}</p>

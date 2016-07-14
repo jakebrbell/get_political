@@ -24,10 +24,17 @@ $xhr.done(function(data) {
 
   const pol = data[0];
 
+
   if (pol.title === 'Sen') {
     pol.title = 'United States Senator'
   } else {
     pol.title = 'United States Representative'
+  }
+
+  if (pol.name === 'Barack Obama') {
+    pol.title = 'President of the United States';
+  } else if (pol.name === 'Joseph R. Biden') {
+    pol.title = 'Vice-President of the United States'
   }
 
   console.log(pol);
