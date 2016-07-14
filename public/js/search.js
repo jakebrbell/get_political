@@ -6,13 +6,23 @@ const qmark = url.indexOf('?');
 const encoding = url.substring(`${qmark + 1}`);
 let query1 = '';
 
-console.log(parseInt(encoding));
-
 if (Number.isNaN(parseInt(encoding))) {
   query1 = 'name=' + encoding;
 } else {
   query1 = 'zip=' + encoding;
 }
+
+// BUILD OUT CLICK TO ADD TO USER FAVORITES
+// THIS FUNCTION CHANGES THE COLORS AND TEXT AS WELL
+
+// $('button').on('click', (event) => {
+//   const $this = $(event.target);
+//
+//   console.log($this);
+// })
+
+
+
 
 var $xhr = $.getJSON(`http://localhost:8000/pols/?${query1}`);
 
@@ -22,16 +32,14 @@ $xhr.done(function(data) {
     return;
   }
 
-  console.log(data);
-
-  console.log(data.length);
-
   if (data.length === 1) {
 
     window.location.replace("http://localhost:8000/pol.html");
 
 
   } else {
+
+    let id = 'off';
 
     for (var i = 0; i < data.length; i++) {
 
@@ -40,36 +48,53 @@ $xhr.done(function(data) {
 
       if (pol.party === 'D') {
         partyColor = 'pol-blue';
+        pol.party = 'DEMOCRAT'
       } else {
         partyColor = 'pol-red';
+        pol.party = 'REPUBLICAN'
       }
+
+      if (pol.title === 'Sen') {
+        pol.title = 'United States Senator';
+      } else if (pol.title === 'Rep') {
+        pol.title = 'United States Representative'
+      }
+
 
       $('.politician-container').append(`
 
-      <div class="politician ${partyColor} z-depth-3">
-        <ul>
-          <li class="img inline-b">
-            <div class="politician-img inline-b">
-              <a href="pol.html?${pol.name}">
-                <img src="${pol.picture_url}" alt="" />
-              </a>
+
+        <div class="politician ${partyColor} z-depth-3">
+
+          <div class="row">
+            <div class="col s2">
+              <div class="politician-img inline-b">
+                <a href="pol.html?${pol.name}">
+                  <img src="${pol.picture_url}"  alt="" />
+                </a>
+              </div>
             </div>
-          </li>
-          <a href="pol.html?${pol.name}">
-          <li class="details">
-              <p>${pol.name}</p>
+            <div class="col s4 details">
+            <a href="pol.html?${pol.name}">
+              <p>${pol.name} - ${pol.state_name}</p>
               <p>${pol.title}</p>
               <p>${pol.street}</p>
               <p> ${pol.state}, ${pol.city} ${pol.zipcode}</p>
-          </li>
-        </a>
-          <li>
-            <button class="btn waves-effect waves-light" type="submit" name="action">FOLLOWING
-              <i class="material-icons right">done</i>
-            </button>
-          </li>
-        </ul>
-      </div>
+              </a>
+            </div>
+            <div class="col s3 party">
+              <p>${pol.party}</p>
+            </div>
+            <div class="col s3 button">
+              <button id="${id}" class="btn waves-effect waves-light" type="submit" name="action">
+                <!-- <i class="material-icons left">library_add</i> -->
+                <i class="material-icons left">done</i>
+
+                FOLLOWING
+              </button>
+            </div>
+          </div>
+        </div>
 
     `);
     }

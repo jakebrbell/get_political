@@ -129,10 +129,10 @@ body {
   overflow: auto;
   padding-bottom: 20px
 }
-
+/*
 .btn, .btn-large, .btn-flat {
   margin: 55px 0 0 410px;
-}
+}*/
 
 .details {
   margin-top: 5px;
@@ -167,7 +167,6 @@ footer.page-footer {
 }
 
 .row .col {
-  margin: 0;
   padding: 0;
 }
 
@@ -198,10 +197,10 @@ margin-top: 63px;
 
 .politician-img img {
   border-radius: 50%;
-  margin-left: 20px;
+  margin-left: 40px;
   margin-top: 25px;
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 
 li {
@@ -209,20 +208,39 @@ li {
   float: left;
 }
 
-li .btn {
+/*li .btn {
   float: right;
-}
+}*/
+
+
 
 .tagline {
   font-style: italic;
   font-size: 13px;
 }
 
-.pol-blue a {
+.pol-blue p {
   color: rgb(0, 0, 128);
 }
 
-.pol-red a {
+.pol-red p {
   color: rgb(128, 0, 0);
 
+}
+
+.party {
+  margin-top: 47px;
+}
+
+.button button {
+  margin-top: 55px;
+box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.36), 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+color: grey;
+background-color: #fff;
+width: 190px;
+}
+
+.button button:hover {
+  background-color: #2E5F97;
+  color: #fff;
 }
