@@ -24,7 +24,7 @@ if (Number.isNaN(parseInt(encoding))) {
 
 
 
-var $xhr = $.getJSON(`http://localhost:8000/pols/?${query1}`);
+var $xhr = $.getJSON(`/pols/?${query1}`);
 
 $xhr.done(function(data) {
   if ($xhr.status !== 200) {
@@ -34,7 +34,7 @@ $xhr.done(function(data) {
 
   if (data.length === 1) {
 
-    window.location.replace("http://localhost:8000/pol.html");
+    window.location.replace("/pol.html");
 
 
   } else {
