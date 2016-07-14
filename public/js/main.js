@@ -24,10 +24,6 @@ $('#top-search').click(function( event ) {
   var $xhr = $.getJSON(`http://localhost:8000/pols/?${query}`);
 
   $xhr.done(function(data) {
-    if ($xhr.status !== 200) {
-      // The served an unsuccessful status code.
-      return;
-    }
     if (data.length === 1) {
       window.location.replace(`http://localhost:8000/pol.html?${encodeURI(input)}`);
     } else if (data.length === 0) {
@@ -36,6 +32,7 @@ $('#top-search').click(function( event ) {
       window.location.replace(`http://localhost:8000/search.html?${encodeURI(input)}`);
     }
   });
+
   $xhr.fail(function(err) {
 
     //toast goes here
@@ -43,5 +40,4 @@ $('#top-search').click(function( event ) {
 
     console.log(err);
   });
-
 });
