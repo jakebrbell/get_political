@@ -53,13 +53,13 @@ $xhr.done(function(data) {
               <img src="${pol.picture_url}" height="275px"  width="225px" alt="" />
               <ul>
                 <li>
-                  <img src="images/facebook-icon.png" height="50px"  width="50px" alt="" />
+                  <a href=${pol.facebook} target="_blank"><i class="fa fa-facebook-square fa-3x"></i></a>
                 </li>
                 <li>
-                  <img src="images/Twitter-icon.png" height="50px"  width="50px" alt="" />
+                  <a href=${pol.twitter} target="_blank"><i class="fa fa-twitter-square fa-3x"></i></a>
                 </li>
                 <li>
-                  <img src="images/facebook-icon.png" height="50px"  width="50px" alt="" />
+                  <a href=${pol.youtube} target="_blank"><i class="fa fa-youtube-square fa-3x"></i></a>
                 </li>
               </ul>
 

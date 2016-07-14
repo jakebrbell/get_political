@@ -182,11 +182,10 @@ footer.page-footer {
   margin-bottom: 35px;
 }
 
-.politician-img img {
-  /*border-radius: 50%;*/
-  border-radius: 5px;
-  margin-left: 25px;
-  margin-top: 25px;
+.politician-img i {
+  color: rgba(0,60,128,0.82);
+  margin-left: 28px;
+  margin-top: 10px;
 }
 
 .politician-img li img {
