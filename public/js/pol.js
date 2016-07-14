@@ -6,8 +6,6 @@ var qmark = url.indexOf('?');
 var encoding = url.substring(`${qmark + 1}`);
 var query1 = '';
 
-console.log(parseInt(encoding));
-
 if (Number.isNaN(parseInt(encoding))) {
   query1 = 'name=' + encoding;
 } else {
@@ -17,6 +15,7 @@ if (Number.isNaN(parseInt(encoding))) {
 var $xhr = $.getJSON(`http://localhost:8000/pols/?${query1}`);
 
 $xhr.done(function(data) {
+  console.log(data);
   var pol = data[0];
 
 
@@ -39,7 +38,7 @@ $xhr.done(function(data) {
       <div class="politician pol-blue">
         <div class="row pol-top">
           <div class="politician-img col s4">
-            <img src="${pol.picture_url}" height="275px"  width="225px" alt="" />
+            <img src="${pol.picture_url}" height="275px"  width="225px" alt="${pol.name}" />
             <ul>
               <li>
                 <a href=${pol.facebook} target="_blank"><i class="fa fa-facebook-square fa-3x"></i></a>
@@ -58,11 +57,11 @@ $xhr.done(function(data) {
             <h2>${pol.title}</h2>
             <p>${pol.street}</p>
             <p> ${pol.city}, ${pol.state} ${pol.zipcode}</p>
-            <p class="pushdown"> Phone: (206) 545-7676</p>
+            <p class="pushdown"> Phone: ${pol.phone}</p>
           </div>
 
           <div class="col s3">
-            <button class="btn waves-effect waves-light" type="submit" name="action">FOLLOWING
+            <button class="follow-btn btn waves-effect waves-light" type="submit" name="action">FOLLOWING
               <i class="material-icons right">done</i>
             </button>
           </div>
@@ -75,15 +74,28 @@ $xhr.done(function(data) {
 
           <div class="class col s8">
             <h1 class="center-align">bio</h1>
-            <p class="bio">
-
-            ${pol.bio}
-
-            </p>
+            <p class="bio">${pol.bio}</p>
           </div>
         </div>
       </div>`);
       //this is the end of the append
+
+    $('.follow-btn').on('click', function(event) {
+      if (!window.COOKIES.loggedIn) {
+        window.location.href = '/registration.html';
+
+        return;
+      }
+
+      var polId = pol.id;
+
+      var $xhr = $.ajax({
+        url: '/users/pols',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({ polId })
+      });
+    });
 
   } else {
     Materialize.toast('That Search Will Not Work', 4000);
