@@ -1,0 +1,12 @@
+main {
+  margin-top: 40px;
+}
+
+.body-bg {
+  height: 980px;
+}
+
+.reg-bg {
+  background-color: rgba(255, 255, 255, .9);
+  padding: 30px;
+}
