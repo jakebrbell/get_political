@@ -24,7 +24,7 @@
       return Materialize.toast('Please enter a password.', 2000);
     }
 
-    const $xhr = $.ajax({
+    var $xhr = $.ajax({
       url: '/session',
       type: 'POST',
       contentType: 'application/json',
@@ -32,12 +32,6 @@
     });
 
     $xhr.done(() => {
-      if ($xhr.status !== 200) {
-        Materialize.toast('User could not be logged in. Please try again.');
-
-        return;
-      }
-
       window.location.href = '/';
     });
 
