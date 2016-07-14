@@ -1,0 +1,297 @@
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/*-----------NAV ONLY-----------*/
+
+
+
+.nav-top {
+  height: 36px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.0);
+}
+
+.nav-top p {
+  margin: 0;
+  color: black;
+  padding-top: 10px;
+  padding-left: 25px;
+}
+
+.nav-top .container {
+  height: 36px;
+}
+
+.blue-bg {
+  height: 72px;
+  width: 100%;
+  background-color: rgba(0,60,128,0.82);
+}
+
+.blue-bg p {
+  margin: 0;
+}
+
+
+.blue-bg img {
+  margin-top: 10px;
+}
+
+.blue-bg a {
+  height: 72px;
+}
+
+.blue-bg ul a {
+  border-right: 1px solid #91050A;
+  /*height: 50px;
+  margin-top: 10px;*/
+  padding-top: 5px;
+}
+
+.blue-bg .search-icon a {
+  margin-top: -10px;
+}
+
+.blue-bg img {
+  margin-top: 6px;
+  padding-top: 0px;
+}
+
+.blue-bg li {
+  height: 72px;
+}
+
+nav {
+  background-color: #fff;
+  /*background: url("Government-Seal-Embossed1.jpg");*/
+  /*background-repeat: repeat;*/
+  /*-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;*/
+  background-size: 50%, 10%;
+  height: 108px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+nav p {
+  line-height: normal;
+}
+
+nav ul a {
+  padding: 0 20px;
+}
+
+.search-nav .search-input {
+  float: right;
+}
+
+.search-nav .float-right {
+  float: right;
+  margin-top: 10px;
+}
+
+.search-input {
+  color: #FFF;
+}
+
+li .search-icon a {
+  border-right: 0;
+  padding-right: 0;
+}
+
+.search-input input[type=text]:focus {
+  border-bottom: 1px solid #91050A;
+  box-shadow: 0 1px 0 0 #91050A;
+}
+
+/*-----------END NAV -----------*/
+
+body {
+  overflow: auto;
+  background-color: rgba(0,0,0,0);
+}
+
+.body-bg {
+  display: block;
+  height: auto;
+  background: url(../images/Lincoln-Memorial-in-DC.jpg)    no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  overflow: auto;
+  padding-bottom: 20px
+}
+/*
+.btn, .btn-large, .btn-flat {
+  margin: 55px 0 0 410px;
+}*/
+
+.details {
+  margin-top: 5px;
+  margin-left: 20px;
+  margin-top: 36px;
+}
+
+.details p {
+  line-height: 5px;
+}
+
+/*div .container {
+  height: 72px;
+}*/
+
+footer.page-footer {
+  background-color: rgba(0,60,128,0.82);
+  margin-top: 0px;
+}
+
+.inline-b {
+  display: inline-block;
+}
+
+.input {
+  background-color: #FFF;
+}
+
+.login {
+  color: rgb(0,60,208);
+  float: right;
+}
+
+.row .col {
+  padding: 0;
+}
+
+.row, .container {
+  background-color: rgba(0,0,0,0);
+}
+
+.politician-container {
+  background-color: rgba(255, 255, 255, .9);
+margin-top: 90px;
+margin-bottom: 35px;
+border-radius: 5px;
+}
+
+.politician {
+  background-color: rgba(255, 255, 255, .9);
+  height: auto;
+  width: 100%;
+  margin-top: 40px;
+  border-radius: 3px;
+  margin-top: 20px;
+
+}
+
+
+.politician-img  {
+  height: 100px;
+  width: 100px;
+}
+
+.politician-img img {
+  border-radius: 50%;
+  margin-left: 40px;
+  margin-top: 25px;
+  width: 100%;
+  height: 100%;
+}
+
+li {
+  display: inline-block;
+  float: left;
+}
+
+/*li .btn {
+  float: right;
+}*/
+
+
+
+.tagline {
+  font-style: italic;
+  font-size: 13px;
+}
+
+.pol-blue p {
+  color: rgb(0, 0, 128);
+}
+
+.pol-red p {
+  color: rgb(128, 0, 0);
+
+}
+
+.party {
+  margin-top: 47px;
+}
+
+.btn, .btn-large, .btn-flat {
+    padding: 2px;
+}
+
+.button button {
+  margin-top: 55px;
+box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.36), 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+color: grey;
+background-color: #fff;
+width: 150px;
+padding-left: 0px;
+}
+
+.button button:hover {
+  background-color: #2E5F97;
+  color: #fff;
+}
+
+.politician-container > .row > .left-card {
+  margin-top: 17px;
+  margin-left: 30px;
+  width: 46%;
+  border-radius: 3px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.36), 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, .9);
+}
+
+.politician-container > .row > .right-card {
+  background-color: rgba(255, 255, 255, .9);
+  margin-top: 17px;
+  margin-right: 30px;
+  width: 46%;
+  border-radius: 3px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.36), 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.dashboard {
+  padding-bottom: 20px;
+}
+
+.row .col.s4 {
+    width: 30.3333333333%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
+}
+
+i {
+  padding-left: 14px;
+  margin-right: -4px;
+}
+
+.twitter-timeline {
+  margin-left: 12%;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.36), 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.body-title {
+  margin-bottom: 0;
+  padding-top: 20px;
+}
