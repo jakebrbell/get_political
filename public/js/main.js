@@ -1,15 +1,14 @@
 'use strict'
 
-let hrefEncoded = '';
-let input = ''
-let query = '';
+var hrefEncoded;
+var input;
+var query;
 
 
 // functionality for nav bar
 
 $("input.top").keyup(() => {
   input = $('#search').val();
-  console.log($('#search').val());
   hrefEncoded = `search.html?${encodeURI(input)}`
   $('a.test').prop('href', hrefEncoded);
 });
@@ -18,10 +17,8 @@ $('#top-search').click(function( event ) {
   event.preventDefault();
   if (Number.isNaN(parseInt(input))) {
     query = 'name=' + encodeURI(input);
-    console.log(query);
   } else {
     query = 'zip=' + encodeURI(input);
-    console.log(query);
   }
 
   var $xhr = $.getJSON(`http://localhost:8000/pols/?${query}`);
@@ -32,7 +29,6 @@ $('#top-search').click(function( event ) {
       return;
     }
     if (data.length === 1) {
-      console.log('this should have switched the page');
       window.location.replace(`http://localhost:8000/pol.html?${encodeURI(input)}`);
     } else if (data.length === 0) {
         Materialize.toast('That Search Will Not Work', 4000);
