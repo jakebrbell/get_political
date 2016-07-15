@@ -17,3 +17,14 @@ main {
 footer.page-footer {
   margin-top: 0px;
 }
+
+.btn-large {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.36), 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+  color: #fff;
+  background-color: #2E5F97;
+}
+
+.btn-large:hover {
+  background-color: #fff;
+  color: grey;
+}

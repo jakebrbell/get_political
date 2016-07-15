@@ -1,11 +1,9 @@
 'use strict'
 
 if (window.COOKIES.loggedIn) {
-
   var $xhr = $.getJSON('/users/pols');
 
   $xhr.done(function(data) {
-    console.log(data);
     $('.dashboard').empty();
     $('.dashboard').append(`
       <div class="container">
@@ -24,9 +22,9 @@ if (window.COOKIES.loggedIn) {
       }
 
       if (pol.name === 'Barack Obama') {
-        pol.title = 'President of the United States';
+        pol.title = 'U.S. President';
       } else if (pol.name === 'Joseph R. Biden') {
-        pol.title = 'Vice-President of the United States';
+        pol.title = 'U.S. Vice President';
       }
 
       var partyColor;
@@ -59,13 +57,13 @@ if (window.COOKIES.loggedIn) {
                 <a href="pol.html?${pol.name}">
                   <p>${pol.name}</p>
                   <p>${pol.title}</p>
-                  <p>${pol.state}</p>
+                  <p>${pol.state_name}</p>
                 </a>
               </div>
               <div class="col s3 button">
-                <button class="btn waves-effect waves-light" type="submit" name="action">
-                  <i class="material-icons left">library_add</i>
-                  FOLLOW
+                <button class="btn waves-effect waves-light" type="submit" name="action" data-id=${pol.pol_id}>
+                  <i class="material-icons left">done</i>
+                  FOLLOWING
                 </button>
               </div>
             </div>
@@ -95,13 +93,13 @@ if (window.COOKIES.loggedIn) {
               <a href="pol.html?${pol.name}">
                 <p>${pol.name}</p>
                 <p>${pol.title}</p>
-                <p>${pol.state}</p>
+                <p>${pol.state_name}</p>
               </a>
             </div>
             <div class="col s3 button">
-              <button class="btn waves-effect waves-light" type="submit" name="action">
-                <i class="material-icons left">library_add</i>
-                FOLLOW
+              <button class="btn waves-effect waves-light" type="submit" name="action" data-id=${pol.pol_id}>
+                <i class="material-icons left">done</i>
+                FOLLOWING
               </button>
             </div>
           </div>
@@ -116,6 +114,21 @@ if (window.COOKIES.loggedIn) {
 
       }
     }
+
+    $('button').on('click', function(event) {
+      event.preventDefault();
+      var polId = $(this).data('id');
+      var $xhr = $.ajax({
+        url: `/users/pols/${polId}`,
+        type: 'DELETE'
+      });
+      $xhr.done(function(data) {
+        window.location.replace(`/dashboard.html`);
+      });
+      $xhr.fail(function(err) {
+        Materialize.toast('Unable to remove politician. Please try again.', 4000);
+      });
+    });
   });
   $xhr.fail(function(err) {
     Materialize.toast('Hi, something went wrong... my bad.', 4000);

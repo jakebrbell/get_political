@@ -4,7 +4,8 @@ var url = window.location.href;
 
 var qmark = url.indexOf('?');
 var encoding = url.substring(`${qmark + 1}`);
-var query1 = '';
+var query1;
+var polId;
 
 if (Number.isNaN(parseInt(encoding))) {
   query1 = 'name=' + encoding;
@@ -16,7 +17,7 @@ var $xhr = $.getJSON(`http://localhost:8000/pols/?${query1}`);
 
 $xhr.done(function(data) {
   var pol = data[0];
-
+  polId = pol.id;
 
   if (pol.title === 'Sen') {
     pol.title = 'United States Senator';
@@ -54,14 +55,15 @@ $xhr.done(function(data) {
           <div class="details col s5">
             <h1>${pol.name}</h1>
             <h2>${pol.title}</h2>
+            <h5>${pol.state_name}</h5>
             <p>${pol.street}</p>
             <p> ${pol.city}, ${pol.state} ${pol.zipcode}</p>
             <p class="pushdown"> Phone: ${pol.phone}</p>
           </div>
 
           <div class="col s3">
-            <button class="follow-btn btn waves-effect waves-light" type="submit" name="action">FOLLOWING
-              <i class="material-icons right">done</i>
+            <button class="no-follow-btn btn waves-effect waves-light" type="submit" name="action">FOLLOW
+              <i class="material-icons left">supervisor_account</i>
             </button>
           </div>
         </div>
@@ -79,24 +81,60 @@ $xhr.done(function(data) {
       </div>`);
       //this is the end of the append
 
-    $('.follow-btn').on('click', function(event) {
-      if (!window.COOKIES.loggedIn) {
-        window.location.href = '/registration.html';
+    $('button').on('click', function(event) {
+      event.preventDefault();
+      if ($('button').hasClass('no-follow-btn')) {
+        if (!window.COOKIES.loggedIn) {
+          window.location.href = '/registration.html';
 
-        return;
+          return;
+        }
+
+        $('button')
+          .removeClass('no-follow-btn')
+          .addClass('yes-follow-btn')
+          .empty();
+        $('button')
+          .text('FOLLOWING')
+          .append('<i class="material-icons left">done</i>');
+        var $xhr = $.ajax({
+          url: `/users/pols/${polId}`,
+          type: 'POST'
+        });
       }
-
-      $xhr = $.ajax({
-        url: `/users/pols/${pol.id}`,
-        type: 'POST'
-      });
+      else if ($('button').hasClass('yes-follow-btn')) {
+        $('button')
+          .removeClass('yes-follow-btn')
+          .addClass('no-follow-btn')
+          .empty();
+        $('button')
+          .text('FOLLOW')
+          .append('<i class="material-icons left">supervisor_account</i>');
+        var $xhr = $.ajax({
+          url: `/users/pols/${polId}`,
+          type: 'DELETE'
+        });
+      }
     });
 
     if (window.COOKIES.loggedIn) {
       $xhr = $.getJSON('/users/pols');
 
       $xhr.done(function(data) {
-        console.log(data);
+
+        for (var i = 0; i < data.length; i++) {
+          if (data[i].pol_id === pol.id) {
+            $('button')
+              .removeClass('no-follow-btn')
+              .addClass('yes-follow-btn')
+              .empty();
+            $('button')
+              .text('FOLLOWING')
+              .append('<i class="material-icons left">done</i>');
+
+            return;
+          }
+        }
       });
     }
 

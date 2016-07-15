@@ -43,7 +43,6 @@
 
     $xhr.fail(function(err) {
 
-      //toast goes here
       Materialize.toast('That Search Will Not Work', 4000);
 
       console.log(err);

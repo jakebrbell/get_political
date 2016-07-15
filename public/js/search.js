@@ -12,46 +12,27 @@ if (Number.isNaN(parseInt(encoding))) {
   query1 = 'zip=' + encoding;
 }
 
-// BUILD OUT CLICK TO ADD TO USER FAVORITES
-// THIS FUNCTION CHANGES THE COLORS AND TEXT AS WELL
-
-// $('button').on('click', (event) => {
-//   const $this = $(event.target);
-//
-//   console.log($this);
-// })
-
-
-
-
 var $xhr = $.getJSON(`/pols/?${query1}`);
 
 $xhr.done(function(data) {
-  if ($xhr.status !== 200) {
-    // The served an unsuccessful status code.
-    return;
-  }
-
   if (data.length === 1) {
 
     window.location.replace("/pol.html");
 
-
   } else {
-
-    let id = 'off';
-
     for (var i = 0; i < data.length; i++) {
 
       const pol = data[i];
       let partyColor = "";
 
-      if (pol.party === 'D') {
+      if (pol.party[0] === 'D') {
         partyColor = 'pol-blue';
-        pol.party = 'DEMOCRAT'
-      } else {
+        pol.party = 'Democrat'
+      } else if (pol.party[0] === 'R') {
         partyColor = 'pol-red';
-        pol.party = 'REPUBLICAN'
+        pol.party = 'Republican'
+      } else {
+        pol.party = 'Independent'
       }
 
       if (pol.title === 'Sen') {
@@ -62,10 +43,7 @@ $xhr.done(function(data) {
 
 
       $('.politician-container').append(`
-
-
         <div class="politician ${partyColor} z-depth-3">
-
           <div class="row">
             <div class="col s2">
               <div class="politician-img inline-b">
@@ -86,17 +64,79 @@ $xhr.done(function(data) {
               <p>${pol.party}</p>
             </div>
             <div class="col s3 button">
-              <button id="${id}" class="btn waves-effect waves-light" type="submit" name="action">
-                <!-- <i class="material-icons left">library_add</i> -->
-                <i class="material-icons left">done</i>
-
-                FOLLOWING
+              <button class="no-follow-btn btn waves-effect waves-light" type="submit" name="action" data-id="${pol.id}">
+                <i class="material-icons left">supervisor_account</i>
+                FOLLOW
               </button>
             </div>
           </div>
         </div>
 
     `);
+    }
+
+    $('button').on('click', function(event) {
+      event.preventDefault();
+      var polId = $(this).data('id');
+      if ($(event.target).hasClass('no-follow-btn')) {
+        if (!window.COOKIES.loggedIn) {
+          window.location.href = '/registration.html';
+
+          return;
+        }
+
+        $(event.target)
+          .removeClass('no-follow-btn')
+          .addClass('yes-follow-btn')
+          .empty();
+        $(event.target)
+          .text('FOLLOWING')
+          .append('<i class="material-icons left">done</i>');
+        var $xhr = $.ajax({
+          url: `/users/pols/${polId}`,
+          type: 'POST'
+        });
+      }
+      else if ($(event.target).hasClass('yes-follow-btn')) {
+        $('button')
+          .removeClass('yes-follow-btn')
+          .addClass('no-follow-btn')
+          .empty();
+        $(event.target)
+          .text('FOLLOW')
+          .append('<i class="material-icons left">supervisor_account</i>');
+        var $xhr = $.ajax({
+          url: `/users/pols/${polId}`,
+          type: 'DELETE'
+        });
+      }
+    });
+
+    if (window.COOKIES.loggedIn) {
+      $xhr = $.getJSON('/users/pols');
+
+      $xhr.done(function(data) {
+        var buttons = $('button[data-id]');
+        var idsFromButtons = [];
+
+        for (var i = 0; i < buttons.length; i++) {
+          idsFromButtons.push(Number.parseInt(buttons[i].attributes[3].nodeValue));
+        }
+
+        for (var i = 0; i < data.length; i++) {
+          for (var j = 0; j < idsFromButtons.length; j++) {
+            if (data[i].pol_id === idsFromButtons[j]) {
+              $(`button[data-id="${idsFromButtons[j]}"]`)
+                .removeClass('no-follow-btn')
+                .addClass('yes-follow-btn')
+                .empty();
+              $(`button[data-id="${idsFromButtons[j]}"]`)
+                .text('FOLLOWING')
+                .append('<i class="material-icons left">done</i>');
+            }
+          }
+        }
+      });
     }
   }
 });

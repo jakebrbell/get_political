@@ -8,8 +8,6 @@
 
 /*-----------NAV ONLY-----------*/
 
-
-
 .nav-top {
   height: 36px;
   width: 100%;
@@ -103,7 +101,6 @@ nav ul a {
 
 li .search-icon a {
   border-right: 0;
-  padding-right: 0;
 }
 
 .search-input input[type=text]:focus {
@@ -164,6 +161,7 @@ footer.page-footer {
 .login {
   color: rgb(0,60,208);
   float: right;
+  margin-right: 20px;
 }
 
 .row .col {
@@ -190,18 +188,21 @@ margin-bottom: 35px;
 
 }
 
-
 .politician-img  {
   height: 100px;
   width: 100px;
+  margin-left: 40px;
+  margin-top: 25px;
+  overflow: hidden;
+  border-radius: 50%;
+  position: relative;
 }
 
 .politician-img img {
-  border-radius: 50%;
-  margin-left: 40px;
-  margin-top: 25px;
+  display: inline;
+  margin: 0 auto;
   width: 100%;
-  height: 100%;
+  height: auto;
 }
 
 li {
@@ -233,15 +234,33 @@ li {
   margin-top: 47px;
 }
 
-.button button {
+.no-follow-btn {
   margin-top: 55px;
-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.36), 0 2px 10px 0 rgba(0, 0, 0, 0.1);
-color: grey;
-background-color: #fff;
-width: 190px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.36), 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+  color: grey;
+  background-color: #fff;
+  width: 190px;
 }
 
-.button button:hover {
+.no-follow-btn:hover {
+  background-color: #2E5F97;
+  color: #fff;
+}
+
+.yes-follow-btn {
+  margin-top: 55px;
+  background-color: #2E5F97;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.36), 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+  color: #fff;
+  width: 190px;
+}
+
+.yes-follow-btn:hover {
+  color: grey;
+  background-color: #fff;
+}
+
+button:focus {
   background-color: #2E5F97;
   color: #fff;
 }
