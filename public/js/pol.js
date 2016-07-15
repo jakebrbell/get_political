@@ -13,7 +13,7 @@ if (Number.isNaN(parseInt(encoding))) {
   query1 = 'zip=' + encoding;
 }
 
-var $xhr = $.getJSON(`http://localhost:8000/pols/?${query1}`);
+var $xhr = $.getJSON(`/pols/?${query1}`);
 
 $xhr.done(function(data) {
   var pol = data[0];

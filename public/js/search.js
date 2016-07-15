@@ -47,13 +47,13 @@ $xhr.done(function(data) {
           <div class="row">
             <div class="col s2">
               <div class="politician-img inline-b">
-                <a href="pol.html?${pol.name}">
+                <a href="/pol.html?${pol.name}">
                   <img src="${pol.picture_url}"  alt="" />
                 </a>
               </div>
             </div>
             <div class="col s4 details">
-            <a href="pol.html?${pol.name}">
+            <a href="/pol.html?${pol.name}">
               <p>${pol.name} - ${pol.state_name}</p>
               <p>${pol.title}</p>
               <p>${pol.street}</p>
