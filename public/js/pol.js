@@ -70,7 +70,7 @@ $xhr.done(function(data) {
 
         <div class="row">
           <div class="pol-main col s4">
-            <a class="twitter-timeline" data-width="300" data-height="450" data-dnt="true" data-theme="light" href="https://twitter.com/${pol.twitter}"></a>
+            <a class="twitter-timeline" data-width="300" data-height="450" data-dnt="true" data-theme="light" href="${pol.twitter}"></a>
           </div>
 
           <div class="class col s8">

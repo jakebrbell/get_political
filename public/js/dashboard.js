@@ -13,7 +13,8 @@ if (window.COOKIES.loggedIn) {
 
     for (var i = 0; i < data.length; i++) {
 
-      const pol = data[i]
+      const pol = data[i];
+      console.log(pol.twitter);
 
       if (pol.title === 'Sen') {
         pol.title = 'U.S. Senator';
@@ -69,7 +70,7 @@ if (window.COOKIES.loggedIn) {
             </div>
             <div class="row">
               <div class="col s12">
-                <a class="twitter-timeline" data-width="75%" data-height="325" data-dnt="true" data-theme="light" href="https://twitter.com/${pol.twitter}"></a>
+                <a class="twitter-timeline" data-width="75%" data-height="325" data-dnt="true" data-theme="light" href="${pol.twitter}"></a>
               </div>
             </div>
           </div>

@@ -40,7 +40,7 @@
     });
 
     $xhr.done(() => {
-      window.location.href = '/';
+      window.location.href = '/login.html';
     });
 
     $xhr.fail(() => {
