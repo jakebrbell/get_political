@@ -24,7 +24,7 @@ router.get('/users/pols', checkAuth, (req, res, next) => {
     });
 });
 
-router.post('users/pols/:polId', checkAuth, (req, res, next) => {
+router.post('/users/pols/:polId', checkAuth, (req, res, next) => {
   const polId = Number.parseInt(req.params.polId);
 
   if (Number.isNaN(polId)) {
@@ -36,6 +36,7 @@ router.post('users/pols/:polId', checkAuth, (req, res, next) => {
     .first()
     .then((pol) => {
       if (!pol) {
+
         return next();
       }
 

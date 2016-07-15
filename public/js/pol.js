@@ -87,13 +87,9 @@ $xhr.done(function(data) {
         return;
       }
 
-      var polId = pol.id;
-
       var $xhr = $.ajax({
-        url: '/users/pols',
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify({ polId })
+        url: `/users/pols/${pol.id}`,
+        type: 'POST'
       });
     });
 
