@@ -14,10 +14,10 @@
     const last_name = $('#last_name').val().trim();
     const email = $('#email').val().trim();
     const password = $('#password').val();
-    const city = $('#city').val().trim();
-    const state = $('#state').val().trim();
-    const party = $('#party').val().trim();
-    const bio = $('#bio').val().trim();
+    // const city = $('#city').val().trim();
+    // const state = $('#state').val().trim();
+    // const party = $('#party').val().trim();
+    // const bio = $('#bio').val().trim();
 
     // Validation
     if (!email) {
@@ -36,7 +36,9 @@
       url: '/users',
       type: 'POST',
       contentType: 'application/json',
-      data: JSON.stringify({ first_name, last_name, email, password, city, state, party, bio })
+      data: JSON.stringify({ first_name, last_name, email, password
+        //  city, state, party, bio
+        })
     });
 
     $xhr.done(() => {
