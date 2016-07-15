@@ -2,10 +2,10 @@
 
 if (window.COOKIES.loggedIn) {
 
-  var $xhr = $.getJSON('/pols/users');
+  var $xhr = $.getJSON('/users/pols');
 
   $xhr.done(function(data) {
-
+    console.log(data);
     $('.dashboard').empty();
     $('.dashboard').append(`
       <div class="container">
@@ -28,6 +28,8 @@ if (window.COOKIES.loggedIn) {
       } else if (pol.name === 'Joseph R. Biden') {
         pol.title = 'Vice-President of the United States';
       }
+
+      var partyColor;
 
       if (pol.party[0] === 'D') {
         partyColor = 'pol-blue';
