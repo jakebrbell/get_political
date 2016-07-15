@@ -84,7 +84,11 @@ router.post('/users', (req, res, next) => {
             first_name: req.body.first_name,
             last_name: req.body.last_name,
             email: req.body.email,
-            hashed_password: hashed_password
+            hashed_password: hashed_password,
+            city: req.body.city,
+            state: req.body.state,
+            party: req.body.party,
+            bio: req.body.bio
           })
           .then(() => {
             res.sendStatus(200);
