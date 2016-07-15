@@ -89,7 +89,7 @@
             </div>
 
             <div class="class col s8">
-              <h1 class="center-align">bio</h1>
+              <h1 class="center-align">Biography</h1>
               <p class="bio">${pol.bio}</p>
             </div>
           </div>
