@@ -15,7 +15,6 @@ if (Number.isNaN(parseInt(encoding))) {
 var $xhr = $.getJSON(`http://localhost:8000/pols/?${query1}`);
 
 $xhr.done(function(data) {
-  console.log(data);
   var pol = data[0];
 
 
@@ -87,11 +86,19 @@ $xhr.done(function(data) {
         return;
       }
 
-      var $xhr = $.ajax({
+      $xhr = $.ajax({
         url: `/users/pols/${pol.id}`,
         type: 'POST'
       });
     });
+
+    if (window.COOKIES.loggedIn) {
+      $xhr = $.getJSON('/users/pols');
+
+      $xhr.done(function(data) {
+        console.log(data);
+      });
+    }
 
   } else {
     Materialize.toast('That Search Will Not Work', 4000);
