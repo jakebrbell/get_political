@@ -1,9 +1,9 @@
-'use strict'
+'use strict';
 
 if (window.COOKIES.loggedIn) {
-  var $xhr = $.getJSON('/users/pols');
+  let $xhr = $.getJSON('/users/pols');
 
-  $xhr.done(function(data) {
+  $xhr.done((data) => {
     $('.dashboard').empty();
     $('.dashboard').append(`
       <div class="container">
@@ -11,37 +11,37 @@ if (window.COOKIES.loggedIn) {
       </div>
     `);
 
-    for (var i = 0; i < data.length; i++) {
-
-      const pol = data[i]
+    for (let i = 0; i < data.length; i++) {
+      const pol = data[i];
 
       if (pol.title === 'Sen') {
         pol.title = 'U.S. Senator';
-      } else {
+      }
+      else {
         pol.title = 'U.S. Representative';
       }
 
       if (pol.name === 'Barack Obama') {
         pol.title = 'U.S. President';
-      } else if (pol.name === 'Joseph R. Biden') {
+      }
+      else if (pol.name === 'Joseph R. Biden') {
         pol.title = 'U.S. Vice President';
       }
 
-      var partyColor;
-
       if (pol.party[0] === 'D') {
-        partyColor = 'pol-blue';
+        pol.partyColor = 'pol-blue';
         pol.party = 'DEMOCRAT';
-      } else if (pol.party[0] === 'R') {
-        partyColor = 'pol-red';
+      }
+      else if (pol.party[0] === 'R') {
+        pol.partyColor = 'pol-red';
         pol.party = 'REPUBLICAN';
-      } else {
+      }
+      else {
         pol.party = 'INDEPENDENT';
       }
 
 
-      if (i === 0 || i%2 === 0) {
-
+      if (i === 0 || i % 2 === 0) {
         $('.dashboard').append(`
 
           <div class="col s5 ${pol.partyColor} left-card">
@@ -61,7 +61,8 @@ if (window.COOKIES.loggedIn) {
                 </a>
               </div>
               <div class="col s3 button">
-                <button class="btn waves-effect waves-light" type="submit" name="action" data-id=${pol.pol_id}>
+                <button class="btn waves-effect waves-light" type="submit"
+                name="action" data-id=${pol.pol_id}>
                   <i class="material-icons left">done</i>
                   FOLLOWING
                 </button>
@@ -69,17 +70,18 @@ if (window.COOKIES.loggedIn) {
             </div>
             <div class="row">
               <div class="col s12">
-                <a class="twitter-timeline" data-width="75%" data-height="325" data-dnt="true" data-theme="light" href="https://twitter.com/${pol.twitter}"></a>
+                <a class="twitter-timeline" data-width="75%" data-height="325"
+                data-dnt="true" data-theme="light"
+                href="https://twitter.com/${pol.twitter}">
+                </a>
               </div>
             </div>
           </div>
 
         `);
-
-      } else {
-
+      }
+      else {
         $('.dashboard').append(`
-
         <div class="col s5 ${pol.partyColor} right-card right">
           <div class="row">
             <div class="col s4">
@@ -97,7 +99,8 @@ if (window.COOKIES.loggedIn) {
               </a>
             </div>
             <div class="col s3 button">
-              <button class="btn waves-effect waves-light" type="submit" name="action" data-id=${pol.pol_id}>
+              <button class="btn waves-effect waves-light" type="submit"
+               name="action" data-id=${pol.pol_id}>
                 <i class="material-icons left">done</i>
                 FOLLOWING
               </button>
@@ -109,16 +112,14 @@ if (window.COOKIES.loggedIn) {
             </div>
           </div>
         </div>
-
         `);
-
       }
     }
 
     $('button').on('click', function(event) {
       event.preventDefault();
-      var polId = $(this).data('id');
-      var $xhr = $.ajax({
+      const polId = $(event.target).data('id');
+      let $xhr = $.ajax({
         url: `/users/pols/${polId}`,
         type: 'DELETE'
       });
