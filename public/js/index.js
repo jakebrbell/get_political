@@ -4,7 +4,7 @@
 $('.scrollspy').scrollSpy();
 
 
-var $xhrNYT = $.getJSON('http://api.nytimes.com/svc/topstories/v2/politics.json?api-key=27eba7b727774aeab3b27334d51cad67');
+var $xhrNYT = $.getJSON('https://api.nytimes.com/svc/topstories/v2/politics.json?api-key=27eba7b727774aeab3b27334d51cad67');
 
 $xhrNYT.done(function(data) {
   var articles = [];

@@ -13,7 +13,7 @@ if (Number.isNaN(parseInt(encoding))) {
   query1 = 'zip=' + encoding;
 }
 
-var $xhr = $.getJSON(`http://localhost:8000/pols/?${query1}`);
+var $xhr = $.getJSON(`/pols/?${query1}`);
 
 $xhr.done(function(data) {
   var pol = data[0];
@@ -70,7 +70,7 @@ $xhr.done(function(data) {
 
         <div class="row">
           <div class="pol-main col s4">
-            <a class="twitter-timeline" data-width="300" data-height="450" data-dnt="true" data-theme="light" href="https://twitter.com/${pol.twitter}"></a>
+            <a class="twitter-timeline" data-width="300" data-height="450" data-dnt="true" data-theme="light" href="${pol.twitter}"></a>
           </div>
 
           <div class="class col s8">
@@ -80,6 +80,23 @@ $xhr.done(function(data) {
         </div>
       </div>`);
       //this is the end of the append
+
+    window.twttr = (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0],
+      t = window.twttr || {};
+    if (d.getElementById(id)) return t;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://platform.twitter.com/widgets.js";
+    fjs.parentNode.insertBefore(js, fjs);
+
+    t._e = [];
+    t.ready = function(f) {
+      t._e.push(f);
+    };
+
+    return t;
+    }(document, "script", "twitter-wjs"));
 
     $('button').on('click', function(event) {
       event.preventDefault();
