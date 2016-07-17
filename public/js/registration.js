@@ -1,4 +1,4 @@
-(function() {
+(() => {
   'use strict';
 
   if (window.COOKIES.loggedIn) {
@@ -10,8 +10,8 @@
   $('select').material_select();
 
   $('.register').click((_event) => {
-    const first_name = $('#first_name').val().trim();
-    const last_name = $('#last_name').val().trim();
+    const firstName = $('#first_name').val().trim();
+    const lastName = $('#last_name').val().trim();
     const email = $('#email').val().trim();
     const password = $('#password').val();
     const city = $('#city').val().trim();
@@ -36,7 +36,9 @@
       url: '/users',
       type: 'POST',
       contentType: 'application/json',
-      data: JSON.stringify({ first_name, last_name, email, password, city, state, party, bio})
+      data: JSON.stringify(
+        { firstName, lastName, email, password, city, state, party, bio }
+      )
     });
 
     $xhr.done(() => {

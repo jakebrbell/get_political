@@ -11,38 +11,40 @@
     window.COOKIES[propKey] = propValue;
   });
 
-  var hrefEncoded;
-  var input;
-  var query;
+  let hrefEncoded;
+  let input;
+  let query;
 
-  $("input.top").keyup(() => {
+  $('input.top').keyup(() => {
     input = $('#search').val();
     hrefEncoded = `/search.html?${encodeURI(input)}`;
     $('a.test').prop('href', hrefEncoded);
   });
 
-  $('#top-search').click(function(event) {
+  $('#top-search').click((event) => {
     event.preventDefault();
     if (Number.isNaN(parseInt(input))) {
-      query = 'name=' + encodeURI(input);
-    } else {
-      query = 'zip=' + encodeURI(input);
+      query = `name=${encodeURI(input)}`;
+    }
+    else {
+      query = `zip=${encodeURI(input)}`;
     }
 
-    var $xhr = $.getJSON(`/pols/?${query}`);
+    const $xhr = $.getJSON(`/pols/?${query}`);
 
-    $xhr.done(function(data) {
+    $xhr.done((data) => {
       if (data.length === 1) {
         window.location.replace(`/pol.html?${encodeURI(input)}`);
-      } else if (data.length === 0) {
-          Materialize.toast('That Search Will Not Work', 4000);
-            } else {
+      }
+      else if (data.length === 0) {
+        Materialize.toast('That Search Will Not Work', 4000);
+      }
+      else {
         window.location.replace(`/search.html?${encodeURI(input)}`);
       }
     });
 
-    $xhr.fail(function(err) {
-
+    $xhr.fail((err) => {
       Materialize.toast('That Search Will Not Work', 4000);
 
       console.log(err);

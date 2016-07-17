@@ -1,4 +1,4 @@
-(function() {
+(() => {
   'use strict';
 
   if (window.COOKIES.loggedIn) {
@@ -24,7 +24,7 @@
       return Materialize.toast('Please enter a password.', 2000);
     }
 
-    var $xhr = $.ajax({
+    const $xhr = $.ajax({
       url: '/session',
       type: 'POST',
       contentType: 'application/json',
