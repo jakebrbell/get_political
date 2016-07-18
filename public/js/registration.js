@@ -19,6 +19,15 @@
     const party = $('#party').val().trim();
     const bio = $('#bio').val().trim();
 
+    console.log(firstName);
+    console.log(lastName);
+    console.log(email);
+    console.log(password);
+    console.log(city);
+    console.log(state);
+    console.log(party);
+    console.log(bio);
+
     // Validation
     if (!email) {
       return Materialize.toast('Please enter an email.', 2000);
@@ -30,6 +39,10 @@
 
     if (!password) {
       return Materialize.toast('Please enter a password.', 2000);
+    }
+
+    if (password.length < 8) {
+      return Materialize.toast('Your password must be at least 8 characters.', 2000);
     }
 
     const $xhr = $.ajax({
@@ -45,7 +58,8 @@
       window.location.href = '/login.html';
     });
 
-    $xhr.fail(() => {
+    $xhr.fail((err) => {
+      console.error(err);
       Materialize.toast('User could not be registered. Please try again.');
     });
   });
