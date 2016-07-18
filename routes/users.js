@@ -3,10 +3,9 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../knex');
-
 const bcrypt = require('bcrypt');
 const ev = require('express-validation');
-// const validations = require('../validations/users')
+const validations = require('../validations/users')
 
 const auth = function(req, res, next) {
   if (!req.session.user) {
@@ -48,23 +47,8 @@ router.get('/users/:id', (req, res, next) => {
     });
 });
 
-router.delete('/users/delete', (req, res, next) => {
-
-})
-
-
-
-router.post('/users', (req, res, next) => {
+router.post('/users', ev(validations.post) (req, res, next) => {
   const userInfo = req.body;
-
-  if (!userInfo.email || userInfo.email.trim() ==='') {
-    res.set('Content-Type', 'text/plain');
-    return res.status(400).send('Password must not be blank');
-  }
-
-  if (!userInfo.password || userInfo.password.trim() === '') {
-    res.set(400).send('Password must not be blank');
-  }
 
   knex('users')
     .where('email', userInfo.email)
