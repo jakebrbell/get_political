@@ -1,7 +1,7 @@
 'use strict';
 
 const express = require('express');
-const router = express.Router();
+const router = express.Router(); // eslint-disable-line new-cap
 const knex = require('../knex');
 
 router.get('/pols/users', (req, res, next) => {

@@ -5,7 +5,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const express = require('express');
-const router = express.Router();
+const router = express.Router(); // eslint-disable-line new-cap
 const knex = require('../knex');
 
 const request = require('request-promise');
@@ -22,7 +22,7 @@ router.get('/pols', (req, res, next) => {
       });
   }
   else {
-    if (req.query.zip) {
+    if (req.query.zip) { // eslint-disable-line no-lonely-if
       const zip = Number.parseInt(req.query.zip);
 
       if (Number.isNaN(zip)) {
@@ -39,7 +39,7 @@ router.get('/pols', (req, res, next) => {
             bioguide_ids.push(pol.bioguide_id);
           }
 
-          return(bioguide_ids);
+          return bioguide_ids;
         })
         .then((bioguide_ids) => {
           knex('pols')
@@ -53,7 +53,7 @@ router.get('/pols', (req, res, next) => {
             .catch((err) => {
               next(err);
             });
-        })
+        });
     }
     else if (req.query.name) {
       const name = req.query.name;
@@ -63,11 +63,13 @@ router.get('/pols', (req, res, next) => {
         .then((pol) => {
           res.send(pol);
         })
+        .catch((err) => {
+          next(err);
+        });
     }
     else {
       next();
     }
-
   }
 });
 

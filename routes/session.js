@@ -1,11 +1,9 @@
 'use strict';
 
 const express = require('express');
-const router = express.Router();
+const router = express.Router(); // eslint-disable-line new-cap
 const knex = require('../knex');
 const bcrypt = require('bcrypt');
-const ev = require('express-validation');
-// const validations = require('../validations/session');
 
 router.post('/session', (req, res, next) => {
   knex('users')
@@ -37,7 +35,7 @@ router.post('/session', (req, res, next) => {
     });
 });
 
-router.delete('/session', (req, res, next) => {
+router.delete('/session', (req, res, _next) => {
   req.session = null;
   res.clearCookie('loggedIn');
   res.sendStatus(200);

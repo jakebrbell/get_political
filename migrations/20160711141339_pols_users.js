@@ -1,3 +1,4 @@
+'use strict';
 
 exports.up = function(knex) {
   return knex.schema.createTable('pols_users', (table) => {
@@ -20,6 +21,6 @@ exports.up = function(knex) {
   });
 };
 
-exports.down = function(knex, Promise) {
+exports.down = function(knex) {
   return knex.schema.dropTable('pols_users');
 };

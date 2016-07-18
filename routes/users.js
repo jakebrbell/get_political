@@ -1,18 +1,18 @@
 'use strict';
 
 const express = require('express');
-const router = express.Router();
+const router = express.Router(); // eslint-disable-line new-cap
 const knex = require('../knex');
 const bcrypt = require('bcrypt');
 const ev = require('express-validation');
-const validations = require('../validations/users')
+const validations = require('../validations/users');
 
-const auth = function(req, res, next) {
+const checkAuth = function(req, res, next) {
   if (!req.session.user) {
     return res.sendStatus(401);
   }
   next();
-}
+};
 
 router.get('/users', (_req, res, next) => {
   knex('users')
@@ -55,12 +55,13 @@ router.post('/users', ev(validations.post), (req, res, next) => {
     .then((users) => {
       if (users.length > 0) {
         res.set('Content-Type', 'text/plain');
-        return res.status(400).send('Email already exists')
+
+        return res.status(400).send('Email already exists');
       }
 
       bcrypt.hash(userInfo.password, 12, (hashErr, hashed_password) => {
         if (hashErr) {
-          next(hashErr)
+          next(hashErr);
         }
 
         knex('users')
@@ -68,7 +69,7 @@ router.post('/users', ev(validations.post), (req, res, next) => {
             first_name: req.body.first_name,
             last_name: req.body.last_name,
             email: req.body.email,
-            hashed_password: hashed_password,
+            hashed_password,
             city: req.body.city,
             state: req.body.state,
             party: req.body.party,
@@ -85,38 +86,36 @@ router.post('/users', ev(validations.post), (req, res, next) => {
     .catch((err) => {
       next(err);
     });
-  })
+});
 
-  router.patch('/users/:id', (req, res,next) => {
-    knex('users')
-      .update(req.body, '*')
-      .where('id', req.params.id)
-      .then((users) => {
-        res.send(users[0]);
-      })
-      .catch((err) => {
-        next(err);
-      });
-  });
+router.patch('/users/:id', checkAuth, (req, res, next) => {
+  knex('users')
+    .update(req.body, '*')
+    .where('id', req.params.id)
+    .then((users) => {
+      res.send(users[0]);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
 
-  router.delete('/users/:id', (req, res, next) => {
-    knex('users')
-      .where('id', req.params.id)
-      .first()
-      .then((users) => {
-
-      return knex('users')
+router.delete('/users/:id', checkAuth, (req, res, next) => {
+  knex('users')
+    .where('id', req.params.id)
+    .first()
+    .then((users) =>
+      knex('users')
         .del()
         .where('id', req.params.id)
         .then(() => {
           delete users.id;
-          res.send(users)
-        });
+          res.send(users);
+        })
+    )
+    .catch((err) => {
+      next(err);
+    });
+});
 
-      })
-      .catch((err) => {
-        next(err);
-      });
-  });
-
-  module.exports = router;
+module.exports = router;

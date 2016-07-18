@@ -1,7 +1,7 @@
 'use strict';
 
 const express = require('express');
-const router = express.Router();
+const router = express.Router(); // eslint-disable-line new-cap
 const knex = require('../knex');
 
 const checkAuth = function(req, res, next) {
@@ -36,7 +36,6 @@ router.post('/users/pols/:polId', checkAuth, (req, res, next) => {
     .first()
     .then((pol) => {
       if (!pol) {
-
         return next();
       }
 
@@ -63,8 +62,8 @@ router.delete('/users/pols/:polId', checkAuth, (req, res, next) => {
 
   knex('pols_users')
     .where({
-      'user_id': req.session.userId,
-      'pol_id': polId
+      user_id: req.session.userId,
+      pol_id: polId
     })
     .first()
     .then((user_pol) => {
@@ -75,12 +74,12 @@ router.delete('/users/pols/:polId', checkAuth, (req, res, next) => {
       return knex('pols_users')
         .del()
         .where({
-          'user_id': req.session.userId,
-          'pol_id': polId
+          user_id: req.session.userId,
+          pol_id: polId
         })
         .then(() => {
           delete user_pol.id;
-          res.send(user_pol)
+          res.send(user_pol);
         });
     })
     .catch((err) => {

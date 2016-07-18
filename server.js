@@ -24,6 +24,7 @@ app.disable('x-powered-by');
 
 if (process.env.NODE_ENV !== 'test') {
   const morgan = require('morgan');
+
   app.use(morgan('short'));
 }
 

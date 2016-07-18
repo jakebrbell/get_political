@@ -10,17 +10,15 @@ exports.seed = function(knex) {
   const pols = [];
 
   return knex('pols').del()
-    .then(() => {
-      return knex.raw("ALTER SEQUENCE pols_id_seq RESTART WITH 1;");
-    })
-    .then(() => {
-      return request.get(`https://www.googleapis.com/civicinfo/v2/representatives/ocd-division%2Fcountry%3Aus?roles=headOfState&roles=deputyHeadOfGovernment&key=${process.env.GOOGLE_CIVIC_API}`)
-    })
+    .then(() => knex.raw('ALTER SEQUENCE pols_id_seq RESTART WITH 1;'))
+    .then(() =>
+      request.get(`https://www.googleapis.com/civicinfo/v2/representatives/ocd-division%2Fcountry%3Aus?roles=headOfState&roles=deputyHeadOfGovernment&key=${process.env.GOOGLE_CIVIC_API}`)
+    )
     .then((response) => {
       const pres = JSON.parse(response);
 
       for (let i = 0; i < pres.officials.length; i++) {
-        let newPol = {
+        const newPol = {
           name: pres.officials[i].name,
           title: pres.offices[i].name,
           state_name: '',
@@ -36,7 +34,6 @@ exports.seed = function(knex) {
         };
 
         for (let j = 0; j < pres.officials[i].channels.length; j++) {
-
           if (pres.officials[i].channels[j].type === 'Facebook') {
             newPol.facebook = `https://www.facebook.com/${pres.officials[i].channels[j].id}`;
           }
@@ -48,18 +45,19 @@ exports.seed = function(knex) {
           }
         }
 
-        pols.push(newPol)
+        pols.push(newPol);
       }
+
       return pols;
     })
-    .then(() => {
-      return request.get(`https://congress.api.sunlightfoundation.com/legislators?chamber=senate&per_page=all&apikey=${process.env.SUNLIGHT_API}`)
-    })
+    .then(() =>
+      request.get(`https://congress.api.sunlightfoundation.com/legislators?chamber=senate&per_page=all&apikey=${process.env.SUNLIGHT_API}`)
+    )
     .then((response) => {
       const sens = JSON.parse(response).results;
 
       for (let i = 0; i < sens.length; i++) {
-        let newPol = {
+        const newPol = {
           name: `${sens[i].first_name} ${sens[i].last_name}`,
           title: sens[i].title,
           state_name: sens[i].state_name,
@@ -84,19 +82,19 @@ exports.seed = function(knex) {
           newPol.youtube = `https://www.youtube.com/${sens[i].youtube_id}`;
         }
 
-        pols.push(newPol)
+        pols.push(newPol);
       }
 
       return pols;
     })
-    .then(() => {
-      return request.get(`https://congress.api.sunlightfoundation.com/legislators?chamber=house&per_page=all&apikey=${process.env.SUNLIGHT_API}`)
-    })
+    .then(() =>
+      request.get(`https://congress.api.sunlightfoundation.com/legislators?chamber=house&per_page=all&apikey=${process.env.SUNLIGHT_API}`)
+    )
     .then((response) => {
       const reps = JSON.parse(response).results;
 
       for (let i = 0; i < reps.length; i++) {
-        let newPol = {
+        const newPol = {
           name: `${reps[i].first_name} ${reps[i].last_name}`,
           title: reps[i].title,
           state_name: reps[i].state_name,
@@ -125,14 +123,13 @@ exports.seed = function(knex) {
           newPol.youtube = `https://www.youtube.com/${reps[i].youtube_id}`;
         }
 
-        pols.push(newPol)
+        pols.push(newPol);
       }
+
       return pols;
     })
-    .then(() => {
-      return knex('pols').insert(pols);
-    })
-    .then(() => {
-      return knex.raw("SELECT setval('pols_id_seq', (SELECT MAX(id) FROM pols));")
-    });
+    .then(() => knex('pols').insert(pols))
+    .then(() =>
+      knex.raw("SELECT setval('pols_id_seq', (SELECT MAX(id) FROM pols));")
+    );
 };
