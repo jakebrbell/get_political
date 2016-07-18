@@ -77,7 +77,7 @@
 
       $('button').on('click', (event) => {
         event.preventDefault();
-        const polId = $(this).data('id');
+        const polId = $(event.target).data('id');
 
         if ($(event.target).hasClass('no-follow-btn')) {
           if (!window.COOKIES.loggedIn) {
@@ -98,7 +98,7 @@
           });
         }
         else if ($(event.target).hasClass('yes-follow-btn')) {
-          $('button')
+          $(event.target)
             .removeClass('yes-follow-btn')
             .addClass('no-follow-btn')
             .empty();
@@ -143,8 +143,6 @@
   });
 
   $xhr.fail((err) => {
-    // The request was unsuccessful for some reason
-    // (ie. the server couldn't even respond).
     console.log(err);
   });
 })();

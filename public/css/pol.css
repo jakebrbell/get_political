@@ -283,7 +283,12 @@ li {
   background-color: #fff;
 }
 
-button:focus {
+.yes-follow-btn:focus {
   background-color: #2E5F97;
   color: #fff;
+}
+
+.no-follow-btn:focus {
+  color: grey;
+  background-color: #fff;
 }

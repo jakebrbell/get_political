@@ -47,7 +47,7 @@ router.get('/users/:id', (req, res, next) => {
     });
 });
 
-router.post('/users', ev(validations.post) (req, res, next) => {
+router.post('/users', ev(validations.post), (req, res, next) => {
   const userInfo = req.body;
 
   knex('users')
