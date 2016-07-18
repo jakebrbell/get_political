@@ -28,3 +28,28 @@ footer.page-footer {
   background-color: #fff;
   color: grey;
 }
+
+.input-field input[type=text]:focus + label,
+.input-field input[type=email]:focus + label,
+.input-field input[type=password]:focus + label,
+textarea.materialize-textarea:focus:not([readonly]) + label {
+  color: #2E5F97;
+}
+
+.input-field input[type=text]:focus,
+.input-field input[type=email]:focus,
+.input-field input[type=password]:focus,
+textarea.materialize-textarea:focus:not([readonly])
+ {
+  border-bottom: 1px solid #2E5F97;
+  box-shadow: 0 1px 0 0 #2E5F97;
+}
+
+.input-field input[type=text].valid {
+  border-bottom: 1px solid #2E5F97;
+  box-shadow: 0 1px 0 0 #2E5F97;
+}
+
+.dropdown-content ul>li, .dropdown-content li>span {
+  color: #2E5F97;
+}
